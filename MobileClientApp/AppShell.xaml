@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MobileClientApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:register="clr-namespace:MobileClientApp.Views.Register"
+    FlyoutIcon="home.png">
+    
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        Title="Register"
+        ContentTemplate="{DataTemplate register:RegisterPage}"
+        Route="MainPage"/>
+
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0.1"></GradientStop>
+            <GradientStop Color="AntiqueWhite" Offset="0.6"></GradientStop>
+            <GradientStop Color="LightCyan" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnSpacing="10" RowDefinitions="7,Auto, 7, 1" ColumnDefinitions="35,*">
+                <Image Grid.Row="1" Grid.Column="0" Source="{Binding FlyoutIcon}"
+                       HeightRequest="30"/>
+                <Label Grid.Row="1" VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Title}"
+                       FontAttributes="Bold"/>
+                <BoxView Grid.Row="3"
+                         Color="LightGrey"
+                         Grid.Column="0" Grid.ColumnSpan="2"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="White"
+                  HeightRequest="100">
+                <Image Aspect="AspectFit"
+                       Source="delivery.png"
+                       Opacity="0.7" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Button Text="Выход" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>

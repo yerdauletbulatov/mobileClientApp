@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels"
+             x:DataType="viewModel:DriverTrackingViewModel"
+             x:Class="MobileClientApp.Views.DriverTrackingPage"
+             Title="Страница отслеживания заказа">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="2">
+        <maps:Map x:Name="mapp" IsShowingUser="True" MapType="Hybrid">
+        </maps:Map>
+        <VerticalStackLayout VerticalOptions="End">
+            <Button Margin="20,0" HeightRequest="50" WidthRequest="150" CornerRadius="20" Text="Добавить заказ" Command="{Binding CreateOrderCommand}" />
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

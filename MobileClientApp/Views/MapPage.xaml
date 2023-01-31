@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels"
+             x:DataType="viewModel:MapViewModel"
+             x:Class="MobileClientApp.Views.MapPage"
+             Title="Главная страница">
+    
+   
+    <Grid RowDefinitions="*,Auto" RowSpacing="2" x:Name="LayoutMap">
+        <StackLayout Grid.Row="1" Orientation="Vertical">
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Margin="20,0" HeightRequest="50" WidthRequest="150" CornerRadius="20" Text="Добавить заказ" Command="{Binding CreateOrderCommand}" />
+            </HorizontalStackLayout>
+        </StackLayout>
+    </Grid>
+    
+    
+
+
+
+
+</ContentPage>

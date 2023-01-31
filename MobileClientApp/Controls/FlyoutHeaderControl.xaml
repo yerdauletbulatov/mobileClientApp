@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClientApp.Controls.FlyoutHeaderControl" >
+    
+    <StackLayout Orientation="Horizontal" Spacing="10" Padding="5">
+        <Label x:Name="lblUserName"  FontSize="24" FontAttributes="Bold" />
+        <Label VerticalTextAlignment="Center" FontAttributes="Bold" x:Name="lblUserSurname" FontSize="24" />
+    </StackLayout>
+    <Label x:Name="lblUserPhoneNumber" FontSize="18" />
+</StackLayout>

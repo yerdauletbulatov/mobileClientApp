@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels.Order"
+             xmlns:delivery="clr-namespace:MobileClientApp.ViewModels.Order"
+             x:DataType="delivery:DetailDeliveryViewModel"
+             x:Class="MobileClientApp.Views.Main.Order.DetailDeliveryPage"
+             Title="Информация о поезке">
+
+    <StackLayout>
+        <HorizontalStackLayout >
+            <Label 
+                Text="{Binding DeliveryInfo.StartCity.Name, StringFormat='{0} => '}" FontSize="20" FontAttributes="Bold"/>
+            <Label 
+                Text="{Binding DeliveryInfo.FinishCity.Name}" FontSize="20" FontAttributes= "Bold"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Цена  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.Price, StringFormat='{0:N1} тг'}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Посылка  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.Package.Name}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label Text="{Binding DeliveryInfo.Package.Length, StringFormat='({0}x'}" FontSize="20"/>
+            <Label Text="{Binding DeliveryInfo.Package.Width}" FontSize="20"/>
+            <Label Text="{Binding DeliveryInfo.Package.Height, StringFormat='x{0}), '}" FontSize="20"/>
+            <Label Text="{Binding DeliveryInfo.Package.Weight, StringFormat='Вес - {0:N1} кг'}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Номер машины  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.CarNumber}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Дата поездки  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.DeliveryDate, StringFormat='{0:dd/MM/yyyy hh:mm}'}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Имя клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.ClientName}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Фамилия клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.ClientSurname}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Номер клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.ClientPhoneNumber}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Имя водителя  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.DriverName}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Фамилия водителя  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.DriverSurname}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Номер водителя  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.DriverPhoneNumber}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Локация  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.Location.Latitude}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Локация  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.Location.Longitude}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Статус  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding DeliveryInfo.StateName}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Button FontSize="17" FontAttributes="Bold" Text="Отследить заказ" Margin="0, 0, 10, 0" HorizontalOptions="Center" Command="{Binding TrackCommand}"/>
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

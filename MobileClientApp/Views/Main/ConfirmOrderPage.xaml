@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels.Main"
+             x:DataType="viewModel:ConfirmOrderViewModel"
+             x:Class="MobileClientApp.Views.Main.ConfirmOrderPage"
+             Title="Расчет доставки посылки">
+    <StackLayout Margin="20">
+        
+        <Frame BorderColor="Black"
+               Padding="10">
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Margin="10"  Text="{Binding OrderInfo.StartCity.Name}"></Label>
+                <Label Margin="10"  Text="=>"></Label>
+                <Label Margin="10" Text="{Binding OrderInfo.FinishCity.Name}"></Label>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Label Text="{Binding OrderInfo.CarType.Name, StringFormat='Тип(машина) {0}'}"/>
+
+        <Label Text="{Binding OrderInfo.Package.Name, StringFormat='Заказ(пакет) {0}'}"/>
+        <Label FontSize="28" Text="{Binding OrderInfo.Price, StringFormat='Цена {0}'}"/>
+
+
+        <Button Text="Потвердить заказ" Command="{Binding ConfirmOrderCommand}"/>
+    </StackLayout>
+</ContentPage>

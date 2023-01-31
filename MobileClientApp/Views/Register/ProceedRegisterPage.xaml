@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels.Register"
+             x:DataType="viewModel:ProceedRegisterViewModel"
+             x:Class="MobileClientApp.Views.Register.ProceedRegisterPage"
+             Shell.FlyoutBehavior="Disabled"
+             Title="Заполнение данных">
+    <VerticalStackLayout>
+        <Label 
+            Text="Завершите регистрацию, заполнив все данные"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal">
+            <HorizontalStackLayout>
+                <Label Text="Ваш Номер" Padding="30"/>
+                <Label Text="{Binding PhoneNumber}" Padding="30"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="28" BorderColor="White">
+                <Image Source="man_icon.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20, 0, 0, 0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Text="{Binding Name}"  Margin="20, 0, 0, 0" Placeholder="Введите ваше имя" PlaceholderColor="black" VerticalOptions="Center" MaxLength="12"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" HeightRequest="56" WidthRequest="56" CornerRadius="28" BorderColor="White">
+                <Image Source="man_icon.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20, 0, 0, 0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Text="{Binding Surname}"  Margin="20, 0, 0, 0" Placeholder="Введите вашу фамилию" PlaceholderColor="black" VerticalOptions="Center" MaxLength="12"/>
+            </Frame>
+        </StackLayout>
+        <Button Text="Подтвердить" HorizontalOptions="Center" Command="{Binding ProceedRegisterCommand}"/>
+        <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+    </VerticalStackLayout>
+</ContentPage>

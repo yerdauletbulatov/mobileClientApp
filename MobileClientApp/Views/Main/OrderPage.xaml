@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels.Main"
+             xmlns:converters="clr-namespace:MobileClientApp.Models"
+             x:DataType="viewModel:OrderViewModel"
+             x:Class="MobileClientApp.Views.Main.OrderPage"
+             Title="Разместить заказ">
+    
+    <VerticalStackLayout Padding="20"
+            HorizontalOptions="Center">
+        <Label 
+            Text="Ваш заказ"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+            <VerticalStackLayout Padding="20">
+                <Label Text="Город отправки"/>
+                    <Picker Title="Город" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding Name}"  SelectedItem="{Binding StartCity}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout  Padding="20">
+                    <Label Text="Куда"/>
+                    <Picker Title="Город" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding Name}"  SelectedItem="{Binding FinishCity}"/>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <StackLayout>
+            <Label Text="Тип машина"/>
+            <Picker Title="Выбрать" ItemsSource="{Binding CarTypeList}" ItemDisplayBinding="{Binding Name}"  SelectedItem="{Binding CarType}"/>
+        </StackLayout>
+        
+        <HorizontalStackLayout>
+            <Label Text="Весь кузов"/>
+            <Switch IsToggled="{Binding IsSingle}"/>
+        </HorizontalStackLayout>
+        
+        <StackLayout>
+            <HorizontalStackLayout>
+                <VerticalStackLayout Padding="20">
+                    <Label Text="Когда"/>
+                    <DatePicker Date="{Binding Date}"
+                                 Format="dd-MM-yyyy"
+                                MinimumDate="{Binding Date}"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </StackLayout>
+        
+        <StackLayout >
+            <Label Text="Выберите пакет"/>
+            <Picker IsEnabled="{Binding IsHand, Converter={converters:BooleanConverter}}" Title="Выбрать" ItemsSource="{Binding PackageList}" ItemDisplayBinding="{Binding Name}"  SelectedItem="{Binding Package}"/>
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="{Binding Weight, StringFormat='Масса = {0:F2}кг'}"
+                   Grid.Row="1" Grid.Column="1" 
+                   HorizontalOptions="Center"  />
+            <Slider Minimum = "0"
+                Maximum = "100"
+                IsEnabled="True"
+                Value = "{Binding Weight}"/>
+
+            <StackLayout Grid.Row="3" Grid.Column="1">
+                <HorizontalStackLayout >
+                    <Label Text="В ручную задать размер" />
+                    <Switch IsToggled="{Binding IsHand}" />
+                </HorizontalStackLayout>
+            </StackLayout>
+
+            <Label Text="{Binding Length, StringFormat='Длина = {0:F2}м'}"
+                   Grid.Row="1" Grid.Column="1" 
+                   HorizontalOptions="Center"  />
+            <Slider Minimum = "0"
+                Maximum = "3"
+                Value = "{Binding Length}"
+                    IsEnabled="{Binding IsHand, Converter={converters:BooleanDefaultConverter}}"/>
+
+            <Label Text="{Binding Height, StringFormat='Высота = {0:F2}м'}"
+                   Grid.Row="1" Grid.Column="1" 
+                   HorizontalOptions="Center"  />
+            <Slider  IsEnabled="{Binding IsHand, Converter={converters:BooleanDefaultConverter}}" Minimum = "0"
+                Maximum = "3"
+                Value = "{Binding Height}"/>
+            <Label Text="{Binding Width , StringFormat='Ширина = {0:F2}м'}"
+                   Grid.Row="1" Grid.Column="1" 
+                   HorizontalOptions="Center"  />
+            <Slider Minimum = "0"
+                Maximum = "3"
+                Value = "{Binding Width }" IsEnabled="{Binding IsHand, Converter={converters:BooleanDefaultConverter}}"/>
+            
+
+        </StackLayout>
+
+        <Button Text="Создать заказ" Command="{Binding CreateOrderCommand}"/>   
+        <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

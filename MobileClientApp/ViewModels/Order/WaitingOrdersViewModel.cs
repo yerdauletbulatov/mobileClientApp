@@ -1,0 +1,49 @@
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MobileClientApp.Helper;
+using MobileClientApp.Helper.DisplayAlert;
+using MobileClientApp.Helper.Extentions;
+using MobileClientApp.Models.Values;
+using MobileClientApp.ViewModels.Base;
+
+namespace MobileClientApp.ViewModels.Order
+{
+    public partial class WaitingOrdersViewModel : BaseViewModel
+    {
+        [ObservableProperty]
+        private bool _isBusy;      
+    
+        public WaitingOrdersViewModel(HttpClient httpClient) : base(httpClient)
+        {
+            IsBusy = false;
+        }
+
+        public ObservableCollection<OrderInfo> WaitingOrders { get; set; } = new();
+
+        public async void Item_Appearing(object sender, EventArgs e) =>
+            await Refresh();
+
+
+        [ICommand]
+        async Task Refresh()
+        {
+            try
+            {
+                IsBusy = true;
+                await Task.Delay(1000);
+                WaitingOrders.Clear();
+                var waitingOrders = await _httpClient.ResponseDataPostAsync<List<OrderInfo>>(API.WaitingOrders);
+                waitingOrders.ForEach(c => WaitingOrders.Add(c));
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert.ExceptionMessage(ex.Message);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+    }
+}

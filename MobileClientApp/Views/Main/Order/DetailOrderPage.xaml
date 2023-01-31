@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileClientApp.ViewModels.Order"
+             xmlns:order="clr-namespace:MobileClientApp.ViewModels.Order"
+             x:DataType="order:DetailOrderViewModel"
+             x:Class="MobileClientApp.Views.Main.Order.DetailOrderPage"
+             Title="Информация о заказе">
+    
+    <StackLayout>
+        <HorizontalStackLayout >
+            <Label 
+                Text="{Binding OrderInfo.StartCity.Name, StringFormat='{0} => '}" FontSize="20" FontAttributes= "Bold"/>
+            <Label 
+                Text="{Binding OrderInfo.FinishCity.Name}" FontSize="20" FontAttributes= "Bold"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Цена  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.Price, StringFormat='{0:N1} тг'}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Посылка  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.Package.Name}" FontSize="20"/>
+        </HorizontalStackLayout>  
+        <HorizontalStackLayout >
+            <Label Text="{Binding OrderInfo.Package.Length, StringFormat='({0}x'}" FontSize="20"/>
+            <Label Text="{Binding OrderInfo.Package.Width}" FontSize="20"/>
+            <Label Text="{Binding OrderInfo.Package.Height, StringFormat='x{0}), '}" FontSize="20"/>
+            <Label Text="{Binding OrderInfo.Package.Weight, StringFormat='Вес - {0:N1} кг'}" FontSize="20"/>
+        </HorizontalStackLayout>    
+        <HorizontalStackLayout >
+            <Label  Text="Тип автомобиля  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.CarType.Name}" FontSize="20"/>
+        </HorizontalStackLayout>   
+        <HorizontalStackLayout >
+            <Label  Text="Дата посездки  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.DeliveryDate, StringFormat='{0:dd/MM/yyyy hh:mm}'}" FontSize="20"/>
+        </HorizontalStackLayout> 
+        <HorizontalStackLayout >
+            <Label  Text="Имя клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.ClientName}" FontSize="20"/>
+        </HorizontalStackLayout> 
+        <HorizontalStackLayout >
+            <Label  Text="Фамилия клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.ClientSurname}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Номер клиента  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.ClientPhoneNumber}" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout >
+            <Label  Text="Статус  -  "
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes= "Bold"/>
+            <Label Text="{Binding OrderInfo.StateName}" FontSize="20"/>
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>
